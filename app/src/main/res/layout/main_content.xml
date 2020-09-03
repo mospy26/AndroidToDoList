@@ -16,10 +16,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ListView_to_do"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintTop_toBottomOf="@id/ListView_to_do">
 
         <EditText
             android:id="@+id/EditText_add_item"
@@ -29,22 +27,21 @@
             android:inputType="textPersonName"
             android:text="Name"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.352"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@id/Button_add_item"
+            app:layout_constraintEnd_toStartOf="@+id/Button_add_item"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintWidth_default="spread" />
 
         <Button
             android:id="@+id/Button_add_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="spread"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/EditText_add_item"
-            tools:layout_editor_absoluteX="248dp"
-            tools:layout_editor_absoluteY="2dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EditText_add_item"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
