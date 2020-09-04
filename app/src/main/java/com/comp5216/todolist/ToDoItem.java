@@ -1,6 +1,7 @@
 package com.comp5216.todolist;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ToDoItem {
     private String title;
@@ -15,6 +16,12 @@ public class ToDoItem {
 
     public Date getCreated() {
         return created;
+    }
+
+    public String getCreatedString() {
+        String pattern = "HH:mm E dd MMM y";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(created);
     }
 
     public Date getModified() {

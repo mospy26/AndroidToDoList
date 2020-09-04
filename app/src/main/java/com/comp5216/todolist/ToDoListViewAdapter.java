@@ -39,6 +39,12 @@ public class ToDoListViewAdapter extends BaseAdapter {
         return position;
     }
 
+    public void addToDoItem(ToDoItem item) {
+        listData.add(item);
+        this.notifyDataSetChanged();
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
@@ -57,7 +63,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
         }
 
         holder.to_do_title.setText(listData.get(position).getTitle());
-        holder.to_do_date.setText(listData.get(position).getCreated().toString());
+        holder.to_do_date.setText(listData.get(position).getCreatedString());
 
         return convertView;
     }
