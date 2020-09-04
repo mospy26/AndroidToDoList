@@ -55,8 +55,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_date = (TextView) convertView.findViewById(R.id.TextView_to_do_date);
 
             convertView.setTag(holder);
-        }
-        else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 

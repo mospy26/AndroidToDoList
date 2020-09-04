@@ -19,7 +19,7 @@ public class ToDoItem {
 
     private Date toDoItemCreatedDate;
 
-    public ToDoItem(String toDoItemTitle){
+    public ToDoItem(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
         this.toDoItemCreatedDate = new Date();
     }

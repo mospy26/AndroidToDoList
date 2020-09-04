@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         new_item = (EditText) findViewById(R.id.EditText_add_item);
         items = new ArrayList<>();
-        items.add(new ToDoItem("Helloworld"));
 
         adapter = new ToDoListViewAdapter(this, items);
         listView = (ListView) findViewById(R.id.ListView_to_do);
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         db = ToDoItemDB.getDatabase(this.getApplication().getApplicationContext());
         dao = db.toDoItemDao();
-
         readItemsFromDatabase();
     }
 
@@ -53,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void saveItemsToDatabase()
-    {
+    private void saveItemsToDatabase() {
         //Use asynchronous task to run query on the background to avoid locking UI
         new AsyncTask<Void, Void, Void>() {
             @Override
