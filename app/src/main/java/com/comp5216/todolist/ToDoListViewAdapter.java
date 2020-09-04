@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.comp5216.todolist.R;
-import com.comp5216.todolist.ToDoItem;
 
 import java.util.ArrayList;
 
@@ -62,8 +60,8 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.to_do_title.setText(listData.get(position).getTitle());
-        holder.to_do_date.setText(listData.get(position).getCreatedString());
+        holder.to_do_title.setText(listData.get(position).getToDoItemTitle());
+        holder.to_do_date.setText(listData.get(position).getToDoItemCreatedDate().toString());
 
         return convertView;
     }

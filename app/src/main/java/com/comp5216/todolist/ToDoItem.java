@@ -1,42 +1,50 @@
 package com.comp5216.todolist;
 
-import java.text.SimpleDateFormat;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
+@Entity(tableName = "todolist")
 public class ToDoItem {
-    private String title;
-    private final Date created;
-    private Date modified;
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "toDoItemID")
+    private int toDoItemID;
 
-    public ToDoItem(String title, Date created, Date modified) {
-        this.title = title;
-        this.created = created;
-        this.modified = modified;
+    @ColumnInfo(name = "toDoItemTitle")
+    private String toDoItemTitle;
+
+    private Date toDoItemCreatedDate;
+
+    public ToDoItem(String toDoItemTitle){
+        this.toDoItemTitle = toDoItemTitle;
+        this.toDoItemCreatedDate = new Date();
     }
 
-    public Date getCreated() {
-        return created;
+    public int getToDoItemID() {
+        return toDoItemID;
     }
 
-    public String getCreatedString() {
-        String pattern = "HH:mm E dd MMM y";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(created);
+    public void setToDoItemID(int toDoItemID) {
+        this.toDoItemID = toDoItemID;
     }
 
-    public Date getModified() {
-        return modified;
+    public String getToDoItemTitle() {
+        return toDoItemTitle;
     }
 
-    public void setModified(Date modified) {
-        this.modified = modified;
+    public void setToDoItemTitle(String toDoItemTitle) {
+        this.toDoItemTitle = toDoItemTitle;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getToDoItemCreatedDate() {
+        return toDoItemCreatedDate;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setToDoItemCreatedDate(Date toDoItemCreatedDate) {
+        this.toDoItemCreatedDate = toDoItemCreatedDate;
     }
 }
