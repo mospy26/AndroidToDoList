@@ -4,20 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/ConstraintLayout_to_do_app">
 
     <ListView
         android:id="@+id/ListView_to_do"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ConstraintLayout_to_do_app"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintBottom_toTopOf="@id/ConstraintLayout_add_item"
         tools:layout_editor_absoluteX="1dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout_add_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ListView_to_do">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:id="@+id/EditText_add_item"
@@ -26,11 +29,11 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Enter to-do item..."
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toStartOf="@+id/Button_add_item"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_default="spread" />
+            app:layout_constraintTop_toTopOf="@id/ConstraintLayout_add_item"
+            app:layout_constraintWidth_default="spread"/>
 
         <Button
             android:id="@+id/Button_add_item"
@@ -38,11 +41,18 @@
             android:layout_height="wrap_content"
             android:text="Add"
             app:layout_constraintWidth_default="spread"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/EditText_add_item"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ConstraintLayout_add_item"
             android:onClick="onAddItemClick"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
