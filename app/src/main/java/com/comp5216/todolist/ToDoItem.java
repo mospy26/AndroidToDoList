@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "todolist")
@@ -42,6 +43,11 @@ public class ToDoItem {
 
     public Date getToDoItemCreatedDate() {
         return toDoItemCreatedDate;
+    }
+
+    public String getToDoItemCreatedDateString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy");
+        return sdf.format(toDoItemCreatedDate);
     }
 
     public void setToDoItemCreatedDate(Date toDoItemCreatedDate) {

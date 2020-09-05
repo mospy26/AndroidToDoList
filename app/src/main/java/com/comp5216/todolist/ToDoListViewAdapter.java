@@ -60,7 +60,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
         }
 
         holder.to_do_title.setText(listData.get(position).getToDoItemTitle());
-        holder.to_do_date.setText(listData.get(position).getToDoItemCreatedDate().toString());
+        holder.to_do_date.setText(listData.get(position).getToDoItemCreatedDateString());
 
         return convertView;
     }
