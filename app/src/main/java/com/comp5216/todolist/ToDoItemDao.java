@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ public interface ToDoItemDao {
 
     @Query("DELETE FROM todolist")
     void deleteAll();
+
+    @Update
+    void update(ToDoItem item);
 }

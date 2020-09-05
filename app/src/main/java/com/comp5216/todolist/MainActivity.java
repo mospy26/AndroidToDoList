@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         db = ToDoItemDB.getDatabase(this.getApplication().getApplicationContext());
         dao = db.toDoItemDao();
+        adapter.setDao(dao);
         readItemsFromDatabase();
     }
 

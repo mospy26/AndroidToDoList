@@ -1,6 +1,8 @@
 package com.comp5216.todolist;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,11 +21,16 @@ public class ToDoListViewAdapter extends BaseAdapter {
     private ArrayList<ToDoItem> listData;
     private LayoutInflater layoutInflater;
     private Context context;
+    private ToDoItemDao dao;
 
     public ToDoListViewAdapter(Context context, ArrayList<ToDoItem> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public void setDao(ToDoItemDao dao) {
+        this.dao = dao;
     }
 
     @Override
@@ -59,16 +66,25 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_date = (TextView) convertView.findViewById(R.id.TextView_to_do_date);
 
 //            final EditText text = holder.to_do_title;
-//            text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//                @Override
-//                public void onFocusChange(View view, boolean b) {
-//                    Log.i("HAHAHAHAHHHHHHHHHAAHAHHAHAHAHAHH", view.toString());
-//                    Editable new_title = text.getText();
-//                    listData.get(position).setToDoItemTitle(new_title.toString());
-//                    dao.modify(listData.get(position));
-//                    Log.i("HAHAHAHAHHHHHHHHHAAHAHHAHAHAHAHH CHAnged", new_title.toString());
-//                }
-//            });
+            holder.to_do_title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @SuppressLint("StaticFieldLeak")
+                @Override
+                public void onFocusChange(View view, boolean hasFocus) {
+                    final String new_title = holder.to_do_title.getText().toString();
+                    if (!hasFocus) {
+                        holder.to_do_title.setText(new_title);
+                        listData.get(position).setToDoItemTitle(new_title);
+                        new AsyncTask<Void, Void, Void>() {
+                            @Override
+                            protected Void doInBackground(Void... voids) {
+                                dao.update(listData.get(position));
+                                Log.i("SQLite updated item", new_title);
+                                return null;
+                            }
+                        }.execute();
+                    }
+                }
+            });
 
             convertView.setTag(holder);
         } else {
