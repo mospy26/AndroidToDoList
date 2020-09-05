@@ -14,13 +14,8 @@ import androidx.fragment.app.DialogFragment;
 
 public class AddItemDialog extends DialogFragment {
 
-    private ToDoItemDao dao;
     private EditText title;
     AddItemDialogListener listener;
-
-    public AddItemDialog(ToDoItemDao dao) {
-        this.dao = dao;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

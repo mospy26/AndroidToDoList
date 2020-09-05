@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
 
     public void showAddItemDialog() {
         // Create an instance of the dialog fragment and show it
-        DialogFragment dialog = new AddItemDialog(this.dao);
+        DialogFragment dialog = new AddItemDialog();
         dialog.show(getSupportFragmentManager(), "AddItemDialog");
     }
 
