@@ -1,10 +1,14 @@
 package com.comp5216.todolist;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -43,16 +47,28 @@ public class ToDoListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
 
         if (convertView == null) {
 
             convertView = layoutInflater.inflate(R.layout.layout_to_do_list, null);
             holder = new ViewHolder();
 
-            holder.to_do_title = (TextView) convertView.findViewById(R.id.TextView_to_do_title);
+            holder.to_do_title = (EditText) convertView.findViewById(R.id.TextView_to_do_title);
             holder.to_do_date = (TextView) convertView.findViewById(R.id.TextView_to_do_date);
+
+//            final EditText text = holder.to_do_title;
+//            text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(View view, boolean b) {
+//                    Log.i("HAHAHAHAHHHHHHHHHAAHAHHAHAHAHAHH", view.toString());
+//                    Editable new_title = text.getText();
+//                    listData.get(position).setToDoItemTitle(new_title.toString());
+//                    dao.modify(listData.get(position));
+//                    Log.i("HAHAHAHAHHHHHHHHHAAHAHHAHAHAHAHH CHAnged", new_title.toString());
+//                }
+//            });
 
             convertView.setTag(holder);
         } else {
@@ -66,7 +82,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView to_do_title;
+        EditText to_do_title;
         TextView to_do_date;
     }
 }

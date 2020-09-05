@@ -9,19 +9,21 @@
         android:orientation="horizontal"
         android:weightSum="100" >
 
-        <TextView
+        <EditText
             android:id="@+id/TextView_to_do_title"
             android:layout_gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="60"
+            android:layout_weight="70"
             android:layout_height="match_parent"
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"
             android:text="Title" />
 
         <TextView
             android:id="@+id/TextView_to_do_date"
             android:layout_gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="40"
+            android:layout_weight="30"
             android:layout_height="match_parent"
             android:text="Date" />
 
