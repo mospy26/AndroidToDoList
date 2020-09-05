@@ -3,8 +3,6 @@ package com.comp5216.todolist;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,10 +60,10 @@ public class ToDoListViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.layout_to_do_list, null);
             holder = new ViewHolder();
 
-            holder.to_do_title = (EditText) convertView.findViewById(R.id.TextView_to_do_title);
-            holder.to_do_date = (TextView) convertView.findViewById(R.id.TextView_to_do_date);
+            holder.to_do_title = convertView.findViewById(R.id.TextView_to_do_title);
+            holder.to_do_date = convertView.findViewById(R.id.TextView_to_do_date);
 
-//            final EditText text = holder.to_do_title;
+            // In place editing of to do item
             holder.to_do_title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @SuppressLint("StaticFieldLeak")
                 @Override
