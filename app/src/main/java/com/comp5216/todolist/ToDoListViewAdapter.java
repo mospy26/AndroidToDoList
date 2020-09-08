@@ -65,16 +65,8 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title = convertView.findViewById(R.id.TextView_to_do_title);
             holder.to_do_date = convertView.findViewById(R.id.TextView_to_do_date);
 
-            holder.to_do_date.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Create an instance of the dialog fragment and show it
-                    DialogFragment dialog = new EditItemDialog(listData.get(position).getToDoItemCreatedDate());
-                    dialog.show(((MainActivity) context).getSupportFragmentManager(), "EditItemDialog");
-                }
-            });
-
             // In place editing of to do item
+            final BaseAdapter adapter = this;
             holder.to_do_title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @SuppressLint("StaticFieldLeak")
                 @Override
@@ -82,15 +74,9 @@ public class ToDoListViewAdapter extends BaseAdapter {
                     final String new_title = holder.to_do_title.getText().toString();
                     if (!hasFocus) {
                         holder.to_do_title.setText(new_title);
+                        if (listData.get(position).getToDoItemTitle().equals(new_title)) { return; }
                         listData.get(position).setToDoItemTitle(new_title);
-                        new AsyncTask<Void, Void, Void>() {
-                            @Override
-                            protected Void doInBackground(Void... voids) {
-                                dao.update(listData.get(position));
-                                Log.i("SQLite updated item", new_title);
-                                return null;
-                            }
-                        }.execute();
+                        new UpdateToDoItemRunner(adapter, dao, listData, position).execute();
                     }
                 }
             });

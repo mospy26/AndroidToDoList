@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AddItemDialog.AddItemDialogListener, EditItemDialog.EditItemDialogListener {
+public class MainActivity extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
 
     private ArrayList<ToDoItem> items;
     private ToDoListViewAdapter adapter;
@@ -110,11 +110,6 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
-    }
-
-    @Override
-    public void sendTitleAndDate(String title) {
 
     }
 

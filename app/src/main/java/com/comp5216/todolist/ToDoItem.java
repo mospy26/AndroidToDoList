@@ -1,5 +1,6 @@
 package com.comp5216.todolist;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -18,11 +19,11 @@ public class ToDoItem {
     @ColumnInfo(name = "toDoItemTitle")
     private String toDoItemTitle;
 
-    private Date toDoItemCreatedDate;
+    private Date toDoItemDate;
 
     public ToDoItem(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
-        this.toDoItemCreatedDate = new Date();
+        this.toDoItemDate = new Date();
     }
 
     public int getToDoItemID() {
@@ -39,18 +40,23 @@ public class ToDoItem {
 
     public void setToDoItemTitle(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
+        setToDoItemDate(new Date());
     }
 
-    public Date getToDoItemCreatedDate() {
-        return toDoItemCreatedDate;
+    public Date getToDoItemDate() {
+        return toDoItemDate;
+    }
+
+    public void setToDoItemDate(Date toDoItemDate) {
+        this.toDoItemDate = toDoItemDate;
     }
 
     public String getToDoItemCreatedDateString() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy");
-        return sdf.format(toDoItemCreatedDate);
+        return sdf.format(toDoItemDate);
     }
 
-    public void setToDoItemCreatedDate(Date toDoItemCreatedDate) {
-        this.toDoItemCreatedDate = toDoItemCreatedDate;
+    public void setToDoItemCreatedDate(Date toDoItemDate) {
+        this.toDoItemDate = toDoItemDate;
     }
 }
