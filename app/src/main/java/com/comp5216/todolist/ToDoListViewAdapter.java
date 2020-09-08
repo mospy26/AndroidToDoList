@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import androidx.fragment.app.DialogFragment;
+
 import java.util.ArrayList;
 
 public class ToDoListViewAdapter extends BaseAdapter {
@@ -62,6 +64,15 @@ public class ToDoListViewAdapter extends BaseAdapter {
 
             holder.to_do_title = convertView.findViewById(R.id.TextView_to_do_title);
             holder.to_do_date = convertView.findViewById(R.id.TextView_to_do_date);
+
+            holder.to_do_date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Create an instance of the dialog fragment and show it
+                    DialogFragment dialog = new EditItemDialog(listData.get(position).getToDoItemCreatedDate());
+                    dialog.show(((MainActivity) context).getSupportFragmentManager(), "EditItemDialog");
+                }
+            });
 
             // In place editing of to do item
             holder.to_do_title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
