@@ -16,7 +16,6 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
 

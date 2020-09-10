@@ -50,12 +50,16 @@ public class ToDoItem {
         return toDoItemCreationDate;
     }
 
+    public void setToDoItemCreationDate(Date toDoItemCreationDate) {
+        this.toDoItemCreationDate = toDoItemCreationDate;
+    }
+
     public Date getToDoItemModifiedDate() {
         return toDoItemModifiedDate;
     }
 
-    public void setToDoItemCreationDate(Date toDoItemCreationDate) {
-        this.toDoItemCreationDate = toDoItemCreationDate;
+    public void setToDoItemModifiedDate(Date toDoItemModifiedDate) {
+        this.toDoItemModifiedDate = toDoItemModifiedDate;
     }
 
     public String getToDoItemCreatedDateString() {
@@ -67,10 +71,6 @@ public class ToDoItem {
         if (toDoItemModifiedDate == null) return null;
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy '(edited)'");
         return sdf.format(toDoItemModifiedDate);
-    }
-
-    public void setToDoItemModifiedDate(Date toDoItemModifiedDate) {
-        this.toDoItemModifiedDate = toDoItemModifiedDate;
     }
 
     public void setToDoItemCreatedDate(Date toDoItemCreationDate) {

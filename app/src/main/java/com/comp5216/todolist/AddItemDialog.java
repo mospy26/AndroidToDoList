@@ -15,8 +15,8 @@ import androidx.fragment.app.DialogFragment;
 
 public class AddItemDialog extends DialogFragment {
 
-    private EditText title;
     AddItemDialogListener listener;
+    private EditText title;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

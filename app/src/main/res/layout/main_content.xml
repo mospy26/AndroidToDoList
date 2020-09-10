@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout_to_do_app"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/ConstraintLayout_to_do_app">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_margin"
@@ -24,10 +24,10 @@
         android:id="@+id/ListView_to_do"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ConstraintLayout_add_item"
         app:layout_constraintLeft_toRightOf="@id/left_margin"
         app:layout_constraintRight_toLeftOf="@id/right_margin"
-        app:layout_constraintBottom_toTopOf="@id/ConstraintLayout_add_item"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
     </ListView>
@@ -55,13 +55,13 @@
             android:id="@+id/Button_add_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onAddItemClick"
             android:text="Add new"
-            app:layout_constraintWidth_default="spread"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ConstraintLayout_add_item"
-            android:onClick="onAddItemClick" />
+            app:layout_constraintWidth_default="spread" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

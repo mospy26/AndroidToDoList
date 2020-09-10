@@ -11,20 +11,20 @@
 
         <TextView
             android:id="@+id/TextView_to_do_title"
-            android:gravity="center_vertical"
             android:layout_width="0dp"
-            android:layout_weight="70"
             android:layout_height="match_parent"
-            android:textSize="18sp"
+            android:layout_weight="70"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
             android:textColor="@color/colorPrimary"
-            android:background="@android:color/transparent" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/TextView_to_do_date"
-            android:layout_gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="30"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="30"
             android:text="Date" />
 
     </LinearLayout>
