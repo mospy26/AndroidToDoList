@@ -2,8 +2,6 @@ package com.comp5216.todolist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
-import androidx.fragment.app.DialogFragment;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ToDoListViewAdapter extends BaseAdapter {
 
@@ -75,7 +69,9 @@ public class ToDoListViewAdapter extends BaseAdapter {
                     final String new_title = holder.to_do_title.getText().toString();
                     if (!hasFocus) {
                         holder.to_do_title.setText(new_title);
-                        if (listData.get(position).getToDoItemTitle().equals(new_title)) { return; }
+                        if (listData.get(position).getToDoItemTitle().equals(new_title)) {
+                            return;
+                        }
                         listData.get(position).setToDoItemTitle(new_title);
                         new UpdateToDoItemRunner(adapter, dao, listData, position).execute();
                     }

@@ -1,10 +1,9 @@
 package com.comp5216.todolist;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

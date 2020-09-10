@@ -1,7 +1,6 @@
 package com.comp5216.todolist;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;

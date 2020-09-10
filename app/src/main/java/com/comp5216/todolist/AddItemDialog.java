@@ -64,6 +64,7 @@ public class AddItemDialog extends DialogFragment {
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface AddItemDialogListener {
         void onDialogPositiveClick(DialogFragment dialog);
+
         void onDialogNegativeClick(DialogFragment dialog);
 
         void sendTitle(String title);
