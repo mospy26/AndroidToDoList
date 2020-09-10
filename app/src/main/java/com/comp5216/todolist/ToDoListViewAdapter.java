@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ToDoListViewAdapter extends BaseAdapter {
 
@@ -87,7 +88,9 @@ public class ToDoListViewAdapter extends BaseAdapter {
         }
 
         holder.to_do_title.setText(listData.get(position).getToDoItemTitle());
-        holder.to_do_date.setText(listData.get(position).getToDoItemCreatedDateString());
+        String modifiedDate = listData.get(position).getToDoItemModifiedDateString();
+        String displayDate = modifiedDate == null ? listData.get(position).getToDoItemCreatedDateString() : modifiedDate;
+        holder.to_do_date.setText(displayDate);
 
         return convertView;
     }

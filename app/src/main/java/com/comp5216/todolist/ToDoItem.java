@@ -19,11 +19,14 @@ public class ToDoItem {
     @ColumnInfo(name = "toDoItemTitle")
     private String toDoItemTitle;
 
-    private Date toDoItemDate;
+    private Date toDoItemCreationDate;
+
+    private Date toDoItemModifiedDate;
 
     public ToDoItem(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
-        this.toDoItemDate = new Date();
+        this.toDoItemCreationDate = new Date();
+        this.toDoItemModifiedDate = null;
     }
 
     public int getToDoItemID() {
@@ -40,23 +43,37 @@ public class ToDoItem {
 
     public void setToDoItemTitle(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
-        setToDoItemDate(new Date());
+        setToDoItemModifiedDate(new Date());
     }
 
-    public Date getToDoItemDate() {
-        return toDoItemDate;
+    public Date getToDoItemCreationDate() {
+        return toDoItemCreationDate;
     }
 
-    public void setToDoItemDate(Date toDoItemDate) {
-        this.toDoItemDate = toDoItemDate;
+    public Date getToDoItemModifiedDate() {
+        return toDoItemModifiedDate;
+    }
+
+    public void setToDoItemCreationDate(Date toDoItemCreationDate) {
+        this.toDoItemCreationDate = toDoItemCreationDate;
     }
 
     public String getToDoItemCreatedDateString() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy");
-        return sdf.format(toDoItemDate);
+        return sdf.format(toDoItemCreationDate);
     }
 
-    public void setToDoItemCreatedDate(Date toDoItemDate) {
-        this.toDoItemDate = toDoItemDate;
+    public String getToDoItemModifiedDateString() {
+        if (toDoItemModifiedDate == null) return null;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy '(edited)'");
+        return sdf.format(toDoItemModifiedDate);
+    }
+
+    public void setToDoItemModifiedDate(Date toDoItemModifiedDate) {
+        this.toDoItemModifiedDate = toDoItemModifiedDate;
+    }
+
+    public void setToDoItemCreatedDate(Date toDoItemCreationDate) {
+        this.toDoItemCreationDate = toDoItemCreationDate;
     }
 }
