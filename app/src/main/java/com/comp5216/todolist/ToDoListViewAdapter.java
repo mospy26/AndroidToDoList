@@ -93,7 +93,6 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Log.i("Clickckkckc", "Log click HAHAHAHAHHAHAA");
                     new DeleteToDoItemRunner(adapter, dao, listData, position).execute();
                     return false;
                 }
