@@ -1,6 +1,8 @@
 package com.comp5216.todolist;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,6 +102,25 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
         // Create an instance of the dialog fragment and show it
         DialogFragment dialog = new AddItemDialog();
         dialog.show(getSupportFragmentManager(), "AddItemDialog");
+    }
+
+    public void showDeleteAlertDialog(ToDoItem item, final int position) {
+        new AlertDialog.Builder(this)
+                .setTitle("Delete to do item")
+                .setMessage("Are you sure you want to delete this item with title " + item.getToDoItemTitle() + "?")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        new DeleteToDoItemRunner(adapter, dao, adapter.getListData(), position).execute();
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.cancel, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     @Override

@@ -11,7 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.fragment.app.DialogFragment;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ToDoListViewAdapter extends BaseAdapter {
 
@@ -50,6 +53,10 @@ public class ToDoListViewAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    public List<ToDoItem> getListData() {
+        return listData;
+    }
+
     @SuppressLint("StaticFieldLeak")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -84,9 +91,8 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_date.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Log.i("Clickckkckc", "Log click HAHAHAHAHHAHAA");
-                    new DeleteToDoItemRunner(adapter, dao, listData, position).execute();
-                    return false;
+                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
+                    return true;
                 }
             });
 
