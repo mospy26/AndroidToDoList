@@ -2,6 +2,8 @@ package com.comp5216.todolist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
@@ -75,6 +78,24 @@ public class ToDoListViewAdapter extends BaseAdapter {
                         listData.get(position).setToDoItemTitle(new_title);
                         new UpdateToDoItemRunner(adapter, dao, listData, position).execute();
                     }
+                }
+            });
+
+            holder.to_do_date.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Log.i("Clickckkckc", "Log click HAHAHAHAHHAHAA");
+                    new DeleteToDoItemRunner(adapter, dao, listData, position).execute();
+                    return false;
+                }
+            });
+
+            holder.to_do_title.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Log.i("Clickckkckc", "Log click HAHAHAHAHHAHAA");
+                    new DeleteToDoItemRunner(adapter, dao, listData, position).execute();
+                    return false;
                 }
             });
 
