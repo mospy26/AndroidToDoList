@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
                 .setView(alertView)
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (!editTtemText.getText().toString().equals(currentText)) {
                             item.setToDoItemTitle(editTtemText.getText().toString());
