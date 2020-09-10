@@ -58,6 +58,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
 
     public void addToDoItem(ToDoItem item) {
         listData.add(item);
+        this.notifySortedDataSetChanged();
     }
 
     public List<ToDoItem> getListData() {
