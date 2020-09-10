@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface ToDoItemDao {
-    @Query("SELECT * FROM todolist")
+    @Query("SELECT * FROM todolist ORDER BY toDoItemModifiedDate DESC")
     List<ToDoItem> listAll();
 
     @Insert

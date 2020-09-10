@@ -24,8 +24,9 @@ public class ToDoItem {
 
     public ToDoItem(String toDoItemTitle) {
         this.toDoItemTitle = toDoItemTitle;
-        this.toDoItemCreationDate = new Date();
-        this.toDoItemModifiedDate = null;
+        Date now = new Date();
+        this.toDoItemCreationDate = now;
+        this.toDoItemModifiedDate = now;
     }
 
     public int getToDoItemID() {

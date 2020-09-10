@@ -29,6 +29,6 @@ public class DeleteToDoItemRunner extends AsyncTask<Void, Void, Boolean> {
     }
 
     protected void onPostExecute(Boolean result) {
-        baseAdapter.notifyDataSetChanged();
+        ((ToDoListViewAdapter) baseAdapter).notifySortedDataSetChanged();
     }
 }

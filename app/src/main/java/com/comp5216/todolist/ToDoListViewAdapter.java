@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ToDoListViewAdapter extends BaseAdapter {
@@ -22,11 +23,18 @@ public class ToDoListViewAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Context context;
     private ToDoItemDao dao;
+    private Comparator<ToDoItem> comparator;
 
     public ToDoListViewAdapter(Context context, ArrayList<ToDoItem> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
+        comparator = new Comparator<ToDoItem>() {
+            @Override
+            public int compare(ToDoItem toDoItem, ToDoItem t1) {
+                return t1.getToDoItemModifiedDate().compareTo(toDoItem.getToDoItemModifiedDate());
+            }
+        };
     }
 
     public void setDao(ToDoItemDao dao) {
@@ -48,9 +56,13 @@ public class ToDoListViewAdapter extends BaseAdapter {
         return position;
     }
 
+    public void notifySortedDataSetChanged() {
+        listData.sort(comparator);
+        this.notifyDataSetChanged();
+    }
+
     public void addToDoItem(ToDoItem item) {
         listData.add(item);
-        this.notifyDataSetChanged();
     }
 
     public List<ToDoItem> getListData() {
@@ -61,6 +73,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
+        final ToDoItem currentItem = listData.get(position);
 
         if (convertView == null) {
 
@@ -73,21 +86,21 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
+                    ((MainActivity) context).showEditItemDialog(currentItem, position, "");
                 }
             });
 
             holder.to_do_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
+                    ((MainActivity) context).showEditItemDialog(currentItem, position, "");
                 }
             });
 
             holder.to_do_date.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
+                    ((MainActivity) context).showDeleteAlertDialog(currentItem, position);
                     return true;
                 }
             });
@@ -95,7 +108,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
+                    ((MainActivity) context).showDeleteAlertDialog(currentItem, position);
                     return true;
                 }
             });
@@ -105,9 +118,9 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.to_do_title.setText(listData.get(position).getToDoItemTitle());
-        String modifiedDate = listData.get(position).getToDoItemModifiedDateString();
-        String displayDate = modifiedDate == null ? listData.get(position).getToDoItemCreatedDateString() : modifiedDate;
+        holder.to_do_title.setText(currentItem.getToDoItemTitle());
+        String displayDate = currentItem.getToDoItemCreationDate().equals(currentItem.getToDoItemModifiedDate()) ?
+                currentItem.getToDoItemCreatedDateString() : currentItem.getToDoItemModifiedDateString();
         holder.to_do_date.setText(displayDate);
 
         return convertView;

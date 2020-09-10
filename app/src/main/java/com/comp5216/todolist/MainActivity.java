@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
         final EditText editTtemText = alertView.findViewById(R.id.EditText_edit_item);
         final String currentText = text.equals("") ? item.getToDoItemTitle() : text;
         editTtemText.setText(currentText);
+        editTtemText.setSelection(editTtemText.getText().length());
         final MainActivity current = this;
         new AlertDialog.Builder(this)
                 .setTitle("Edit Item")
