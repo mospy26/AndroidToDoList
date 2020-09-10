@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements AddItemDialog.AddItemDialogListener {
 
@@ -120,6 +123,60 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.cancel, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    public void showCancelEditAlertDialog(final ToDoItem item, final int position, final String text) {
+        final MainActivity current = this;
+        new AlertDialog.Builder(this)
+                .setTitle("Cancel Edit")
+                .setMessage("Are you sure you want to cancel this edit?")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, null)
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton("Go Back", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        current.showEditItemDialog(item, position, text);
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+    }
+
+    public void showEditItemDialog(final ToDoItem item, final int position, String text) {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View alertView = layoutInflater.inflate(R.layout.layout_edit_item, null);
+        final EditText editTtemText = alertView.findViewById(R.id.EditText_edit_item);
+        final String currentText = text.equals("") ? item.getToDoItemTitle() : text;
+        editTtemText.setText(currentText);
+        final MainActivity current = this;
+        new AlertDialog.Builder(this)
+                .setTitle("Edit Item")
+                .setView(alertView)
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!editTtemText.getText().toString().equals(currentText)) {
+                            item.setToDoItemTitle(editTtemText.getText().toString());
+                            new UpdateToDoItemRunner(adapter, dao, adapter.getListData(), position).execute();
+                        }
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String currentText = editTtemText.getText().toString();
+                        current.showCancelEditAlertDialog(item, position, currentText);
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_edit)
                 .show();
     }
 

@@ -70,21 +70,17 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title = convertView.findViewById(R.id.TextView_to_do_title);
             holder.to_do_date = convertView.findViewById(R.id.TextView_to_do_date);
 
-            // In place editing of to do item
-            final BaseAdapter adapter = this;
-            holder.to_do_title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @SuppressLint("StaticFieldLeak")
+            holder.to_do_title.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onFocusChange(View view, boolean hasFocus) {
-                    final String new_title = holder.to_do_title.getText().toString();
-                    if (!hasFocus) {
-                        holder.to_do_title.setText(new_title);
-                        if (listData.get(position).getToDoItemTitle().equals(new_title)) {
-                            return;
-                        }
-                        listData.get(position).setToDoItemTitle(new_title);
-                        new UpdateToDoItemRunner(adapter, dao, listData, position).execute();
-                    }
+                public void onClick(View view) {
+                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
+                }
+            });
+
+            holder.to_do_date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
                 }
             });
 
@@ -99,8 +95,8 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    new DeleteToDoItemRunner(adapter, dao, listData, position).execute();
-                    return false;
+                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
+                    return true;
                 }
             });
 
@@ -118,7 +114,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        EditText to_do_title;
+        TextView to_do_title;
         TextView to_do_date;
     }
 }
