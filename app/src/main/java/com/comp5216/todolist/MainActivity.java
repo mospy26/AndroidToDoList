@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
 
         items = new ArrayList<>();
 
-        adapter = new ToDoListViewAdapter(this, items);
-        listView = findViewById(R.id.ListView_to_do);
-        listView.setAdapter(adapter);
-
         db = ToDoItemDB.getDatabase(this.getApplication().getApplicationContext());
         dao = db.toDoItemDao();
         readItemsFromDatabase();
+
+        adapter = new ToDoListViewAdapter(this, items);
+        listView = findViewById(R.id.ListView_to_do);
+        listView.setAdapter(adapter);
     }
 
     public void onAddItemClick(View view) {
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
                 @Override
                 protected Void doInBackground(Void... voids) {
                     List<ToDoItem> itemsFromDB = dao.listAll(); //read items from database
+                    items.clear();
                     if (itemsFromDB != null && itemsFromDB.size() > 0) {
                         for (ToDoItem item : itemsFromDB) {
                             items.add(item);

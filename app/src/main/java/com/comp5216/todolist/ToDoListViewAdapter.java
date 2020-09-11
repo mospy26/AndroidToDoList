@@ -2,6 +2,7 @@ package com.comp5216.todolist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,13 +95,13 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((MainActivity) context).showEditItemDialog(currentItem, position, "");
+                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
                 }
             });
             holder.to_do_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((MainActivity) context).showEditItemDialog(currentItem, position, "");
+                    ((MainActivity) context).showEditItemDialog(listData.get(position), position, "");
                 }
             });
 
@@ -108,14 +109,14 @@ public class ToDoListViewAdapter extends BaseAdapter {
             holder.to_do_date.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    ((MainActivity) context).showDeleteAlertDialog(currentItem, position);
+                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
                     return true;
                 }
             });
             holder.to_do_title.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    ((MainActivity) context).showDeleteAlertDialog(currentItem, position);
+                    ((MainActivity) context).showDeleteAlertDialog(listData.get(position), position);
                     return true;
                 }
             });

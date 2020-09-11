@@ -24,7 +24,7 @@ public class ToDoItem {
     private Date toDoItemModifiedDate;
 
     public ToDoItem(String toDoItemTitle) {
-        this.toDoItemTitle = toDoItemTitle;
+        this.toDoItemTitle = toDoItemTitle.trim();
         Date now = new Date();
         this.toDoItemCreationDate = now;
         this.toDoItemModifiedDate = now;
@@ -43,7 +43,7 @@ public class ToDoItem {
     }
 
     public void setToDoItemTitle(String toDoItemTitle) {
-        this.toDoItemTitle = toDoItemTitle;
+        this.toDoItemTitle = toDoItemTitle.trim();
         setToDoItemModifiedDate(new Date());
     }
 
@@ -76,5 +76,10 @@ public class ToDoItem {
 
     public void setToDoItemCreatedDate(Date toDoItemCreationDate) {
         this.toDoItemCreationDate = toDoItemCreationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + this.toDoItemID + ", Title: " + this.toDoItemTitle;
     }
 }
