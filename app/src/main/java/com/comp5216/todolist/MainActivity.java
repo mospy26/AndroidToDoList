@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
 
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         new DeleteToDoItemRunner(adapter, dao, adapter.getListData(), position).execute();
                     }
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
 
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, null)
+                .setPositiveButton("YES", null)
 
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton("Go Back", new DialogInterface.OnClickListener() {
