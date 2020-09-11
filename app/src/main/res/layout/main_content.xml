@@ -38,25 +38,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!--        <EditText-->
-        <!--            android:id="@+id/EditText_add_item"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:ems="10"-->
-        <!--            android:inputType="textPersonName"-->
-        <!--            android:hint="@string/enter_title"-->
-        <!--            app:layout_constraintBottom_toTopOf="@id/guideline"-->
-        <!--            app:layout_constraintEnd_toStartOf="@+id/Button_add_item"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@id/ConstraintLayout_add_item"-->
-        <!--            app:layout_constraintWidth_default="spread"/>-->
-
         <Button
             android:id="@+id/Button_add_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onAddItemClick"
-            android:text="Add new"
+            android:text="@string/add_new"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

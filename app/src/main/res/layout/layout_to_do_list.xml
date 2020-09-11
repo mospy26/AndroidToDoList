@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="30"
-            android:text="Date" />
+            android:text="@string/date" />
 
     </LinearLayout>
 

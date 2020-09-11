@@ -7,4 +7,6 @@
     <string name="enter_title">Enter to-do item…</string>
     <string name="yes">YES</string>
     <string name="go_back">GO BACK</string>
+    <string name="date">Date</string>
+    <string name="add_new">Add new</string>
 </resources>
