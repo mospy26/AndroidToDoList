@@ -5,4 +5,6 @@
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
     <string name="enter_title">Enter to-do item…</string>
+    <string name="yes">YES</string>
+    <string name="go_back">GO BACK</string>
 </resources>

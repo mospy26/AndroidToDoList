@@ -8,6 +8,12 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 
+/**
+ * Room database class for to-do item database
+ *
+ * @author Mustafa
+ * @version 1.0
+ */
 @Database(entities = {ToDoItem.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class ToDoItemDB extends RoomDatabase {

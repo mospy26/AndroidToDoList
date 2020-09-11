@@ -36,18 +36,17 @@ public class AddItemDialog extends DialogFragment {
                 })
                 .setNegativeButton(R.string.cancel_text, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        AddItemDialog.this.getDialog().cancel();
                     }
                 });
         // Create the AlertDialog object and return it
         return builder.create();
     }
 
-    // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
+    // Override the Fragment.onAttach() method to instantiate the AddItemDialogListener
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        // Verify that the host activity implements the callback interface
+        // Verify that the host main activity implements the callback interface
         try {
             // Instantiate the AddItemDialogListener so we can send events to the host
             listener = (AddItemDialogListener) context;
@@ -63,10 +62,6 @@ public class AddItemDialog extends DialogFragment {
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface AddItemDialogListener {
-        void onDialogPositiveClick(DialogFragment dialog);
-
-        void onDialogNegativeClick(DialogFragment dialog);
-
         void sendTitle(String title);
     }
 }

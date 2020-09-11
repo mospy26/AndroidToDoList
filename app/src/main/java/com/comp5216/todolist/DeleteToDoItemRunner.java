@@ -6,12 +6,18 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+/**
+ * Custom AsyncTask runner that deletes to-do items with callback events back to MainActivity
+ *
+ * @author Mustafa
+ * @version 1.0
+ */
 public class DeleteToDoItemRunner extends AsyncTask<Void, Void, Boolean> {
 
-    private BaseAdapter baseAdapter;
-    private ToDoItemDao dao;
-    private List<ToDoItem> listData;
-    private int position;
+    private final BaseAdapter baseAdapter;
+    private final ToDoItemDao dao;
+    private final List<ToDoItem> listData;
+    private final int position;
 
     public DeleteToDoItemRunner(BaseAdapter baseAdapter, ToDoItemDao dao, List<ToDoItem> listData, int position) {
         this.baseAdapter = baseAdapter;
@@ -28,6 +34,11 @@ public class DeleteToDoItemRunner extends AsyncTask<Void, Void, Boolean> {
         return true;
     }
 
+    /**
+     * Callback to MainActivity to re sort items in to-do list inventory
+     *
+     * @param result
+     */
     protected void onPostExecute(Boolean result) {
         ((ToDoListViewAdapter) baseAdapter).notifySortedDataSetChanged();
     }

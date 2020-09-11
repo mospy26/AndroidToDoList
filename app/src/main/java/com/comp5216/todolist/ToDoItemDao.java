@@ -8,6 +8,12 @@ import androidx.room.Update;
 
 import java.util.List;
 
+/**
+ * DAO for to-do list database
+ *
+ * @author Mustafa
+ * @version 1.0
+ */
 @Dao
 public interface ToDoItemDao {
     @Query("SELECT * FROM todolist ORDER BY toDoItemModifiedDate DESC")

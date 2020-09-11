@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity(tableName = "todolist")
 public class ToDoItem {
@@ -63,13 +64,13 @@ public class ToDoItem {
     }
 
     public String getToDoItemCreatedDateString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy", Locale.US);
         return sdf.format(toDoItemCreationDate);
     }
 
     public String getToDoItemModifiedDateString() {
         if (toDoItemModifiedDate == null) return null;
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy '(edited)'");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm 'on' EEE dd MMM',' yyyy '(edited)'", Locale.US);
         return sdf.format(toDoItemModifiedDate);
     }
 

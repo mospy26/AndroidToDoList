@@ -6,12 +6,19 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
+
+/**
+ * Custom AsyncTask runner that updates/edits a to-do item with callback events back to MainActivity
+ *
+ * @author Mustafa
+ * @version 1.0
+ */
 public class UpdateToDoItemRunner extends AsyncTask<Void, Void, Boolean> {
 
-    private BaseAdapter baseAdapter;
-    private ToDoItemDao dao;
-    private List<ToDoItem> listData;
-    private int position;
+    private final BaseAdapter baseAdapter;
+    private final ToDoItemDao dao;
+    private final List<ToDoItem> listData;
+    private final int position;
 
     public UpdateToDoItemRunner(BaseAdapter baseAdapter, ToDoItemDao dao, List<ToDoItem> listData, int position) {
         this.baseAdapter = baseAdapter;
@@ -27,6 +34,11 @@ public class UpdateToDoItemRunner extends AsyncTask<Void, Void, Boolean> {
         return true;
     }
 
+    /**
+     * Callback to MainActivity to re sort items in to-do list inventory
+     *
+     * @param result
+     */
     protected void onPostExecute(Boolean result) {
         ((ToDoListViewAdapter) baseAdapter).notifySortedDataSetChanged();
     }
