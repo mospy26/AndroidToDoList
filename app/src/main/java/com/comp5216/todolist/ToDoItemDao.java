@@ -25,9 +25,6 @@ public interface ToDoItemDao {
     @Insert
     void insertAll(ToDoItem... toDoItems);
 
-    @Query("DELETE FROM todolist")
-    void deleteAll();
-
     @Update
     void update(ToDoItem item);
 

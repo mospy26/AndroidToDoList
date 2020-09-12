@@ -135,6 +135,12 @@ public class ToDoListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * ViewHolder class containing the title and date of to-do item to be displayed
+     *
+     * @author Mustafa
+     * @version 1.0
+     */
     static class ViewHolder {
         TextView to_do_title;
         TextView to_do_date;

@@ -9,6 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Entity class for To Do Item table
+ *
+ * @author Mustafa
+ * @version 1.0
+ */
 @Entity(tableName = "todolist")
 public class ToDoItem {
     @PrimaryKey(autoGenerate = true)
