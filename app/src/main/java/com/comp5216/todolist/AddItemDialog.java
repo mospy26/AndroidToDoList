@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 /**
  * Add item DialogFragment which sends data and callback events back to MainActivity
  * This class makes sure that the MainActivity gets a callback of the new title of the new to-do item
- *  that the user inputs
+ * that the user inputs
  *
  * @author Mustafa
  * @version 1.0
