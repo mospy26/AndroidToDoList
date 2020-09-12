@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.Add
         if (title != null && title.length() > 0) {
             ToDoItem new_todo_item = new ToDoItem(title);
             saveItemToDatabase(new_todo_item);
-            adapter.addToDoItem(new_todo_item);
+            readItemsFromDatabase();
         }
     }
 }
